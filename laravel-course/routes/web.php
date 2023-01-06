@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/contact', function () {
+    return view('contact', ['array'=> ['User' , 'Admin' , 'Publisher']]);
+});
+
+Route::get('/admin', function () {
+    return view('admin.test', [TestController::class , 'test' ]);
+});
+
