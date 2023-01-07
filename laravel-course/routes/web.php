@@ -26,3 +26,6 @@ Route::get('/admin', function () {
     return view('admin.test', [TestController::class , 'test' ]);
 });
 
+Route::get('/register' , [\App\Http\Controllers\RegisterController::class, 'register']);
+Route::post('/register' , [\App\Http\Controllers\RegisterController::class, 'register']);
+
