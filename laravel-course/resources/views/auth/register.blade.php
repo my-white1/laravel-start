@@ -16,7 +16,6 @@
                         <div class="card-body p-md-5">
                             <div class="row justify-content-center">
                                 <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-
                                     <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
 
                                     <form class="mx-1 mx-md-4" action="http://127.0.0.1:8000/register" method="post">
@@ -25,7 +24,13 @@
                                             <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
                                                 <label class="form-label" for="form3Example1c">Your Name</label>
-                                                <input type="text" name="name" id="form3Example1c" class="form-control" />
+                                            @if($errors->has('name'))
+                                                    <span class="text-danger"></span>
+                                                    <input type="text" name="name" id="form3Example1c" class="form-control text-danger" style="border: 1px solid red " placeholder="{{$errors->first('name')}}" />
+                                                @else
+                                                    <input type="text" name="name" id="form3Example1c" class="form-control"/>
+                                                @endif
+
                                             </div>
                                         </div>
 
@@ -33,7 +38,12 @@
                                             <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
                                                 <label class="form-label" for="form3Example3c">Your Email</label>
-                                                <input type="email" name="email" id="form3Example3c" class="form-control" />
+                                                @if($errors->has('email'))
+                                                    <span class="text-danger"></span>
+                                                    <input type="email" name="email" id="form3Example1c" class="form-control text-danger" style="border: 1px solid red " placeholder="{{$errors->first('email')}}" />
+                                                @else
+                                                    <input type="email" name="email" id="form3Example1c" class="form-control"/>
+                                                @endif
                                             </div>
                                         </div>
 
@@ -41,7 +51,12 @@
                                             <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
                                                 <label class="form-label" for="form3Example4c">Password</label>
-                                                <input type="password" name="password" id="form3Example4c" class="form-control" />
+                                                @if($errors->has('password'))
+                                                    <span class="text-danger"></span>
+                                                    <input type="password" name="password" id="form3Example1c" class="form-control text-danger" style="border: 1px solid red " placeholder="{{$errors->first('password')}}" />
+                                                @else
+                                                    <input type="password" name="password" id="form3Example1c" class="form-control"/>
+                                                @endif
                                             </div>
                                         </div>
 
@@ -49,7 +64,11 @@
                                             <i class="fas fa-key fa-lg me-3 fa-fw"></i>
                                             <div class="form-outline flex-fill mb-0">
                                                 <label class="form-label" for="form3Example4cd">Repeat your password</label>
-                                                <input type="password" name="password_confirmation" id="form3Example4cd" class="form-control" />
+                                                @if($errors->has('password_confirmation'))
+                                                    <input type="password" name="password_confirmation" id="form3Example1c" class="form-control text-danger" style="border: 1px solid red " placeholder="{{$errors->first('password_confirmation')}}" />
+                                                @else
+                                                    <input type="password" name="password_confirmation" id="form3Example1c" class="form-control"/>
+                                                @endif
                                             </div>
                                         </div>
 

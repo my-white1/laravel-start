@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
@@ -12,7 +13,18 @@ class RegisterController extends Controller
         if(\request()->isMethod('get')){
             return view('auth.register');
         } else {
-            User::create($request->all());
+            $data = $request->all();
+            $data['password'] = bcrypt($data['password']);
+            $request->validate([
+                'name' => 'required|min:8',
+                'email' => 'required|email',
+                'password' => 'required|confirmed|min:8',
+            ], [
+                'name.required' => 'Ism kiritilmadi',
+                'name.min' => "Kamida 8 ta harfdan iborat bo'lishi kerak",
+            ]);
+            User::create($data);
+            return redirect()->back();
         }
     }
 
